@@ -94,12 +94,17 @@ plt.show()
 pc1 = pca_result[:, 0]
 
 plt.figure(figsize=(12, 6))
-plt.bar(data['Country'], pc1, color='skyblue')
+bars = plt.bar(data['Country'], pc1, color='skyblue')
 plt.title('Bar Graph of Principal Component 1 (PC1)')
 plt.xlabel('Country')
 plt.ylabel('PC1 Value')
 plt.xticks(rotation=45, ha='right')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval, round(yval, 2),
+             ha='center', va='bottom', fontsize=10)
 
 plt.tight_layout()
 plt.show()
